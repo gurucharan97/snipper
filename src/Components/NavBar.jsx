@@ -23,9 +23,7 @@ import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import TAB1 from "../Containers/TAB1";
 import TAB2 from "../Containers/TAB2";
 import TAB3 from "../Containers/TAB3";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTimes } from '@fortawesome/free-solid-svg-icons';
-
+import Home from  "../Containers/Home";
 
 const drawerWidth = 240;
 
@@ -53,7 +51,7 @@ const styles = theme => ({
     marginRight: 20,
   },
   hide: {
-    display: 'none',
+    display: 'none',    
   },
   drawer: {
     width: drawerWidth,
@@ -181,6 +179,7 @@ class NavBar extends React.Component {
           })}
         >
           <div className={classes.drawerHeader} />
+          <Home />
           {/* <Typography className={classes.paragraphStyle} paragraph>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
             incididunt ut labore et dolore magna aliqua. Rhoncus dolor purus non enim praesent
