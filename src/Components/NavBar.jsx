@@ -11,6 +11,7 @@ import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
+import ClearIcon from '@material-ui/icons/Clear';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import ListItem from '@material-ui/core/ListItem';
@@ -22,6 +23,9 @@ import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import TAB1 from "../Containers/TAB1";
 import TAB2 from "../Containers/TAB2";
 import TAB3 from "../Containers/TAB3";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTimes } from '@fortawesome/free-solid-svg-icons';
+
 
 const drawerWidth = 240;
 
@@ -90,6 +94,9 @@ const styles = theme => ({
   headerName: {
     fontFamily: "monospace",
     fontSize: "xx-large"
+  },
+  textAlign: {
+      textAlign: "center"
   }
 });
 
@@ -145,29 +152,27 @@ class NavBar extends React.Component {
         >
           <div className={classes.drawerHeader}>
             <IconButton onClick={this.handleDrawerClose}>
-              {theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
+              {theme.direction === 'ltr' ? <ClearIcon /> : <ClearIcon />}
             </IconButton>
           </div>
           <Divider />
           <List>
             <Link to="/TAB1">
-              <ListItem >
-                <ListItemIcon><InboxIcon /> </ListItemIcon>
+              <ListItem className={classes.textAlign}>
                 <ListItemText primary="TAB1" />
               </ListItem>
-</Link>
-<Link to="/TAB2">
-              <ListItem >
-                <ListItemIcon><InboxIcon /> </ListItemIcon>
+            </Link>
+            <Link to="/TAB2">
+              <ListItem className={classes.textAlign}>
                 <ListItemText primary="TAB2" />
               </ListItem>
-</Link>
-<Link to="/TAB3">
-              <ListItem >
-                <ListItemIcon><InboxIcon /> </ListItemIcon>
+            </Link>
+            <Link to="/TAB3">
+              <ListItem className={classes.textAlign}>
+                {/* <ListItemIcon><InboxIcon /> </ListItemIcon> */}
                 <ListItemText primary="TAB3" />
               </ListItem>
-</Link>
+            </Link>
           </List>
         </Drawer>
         <main
@@ -176,7 +181,7 @@ class NavBar extends React.Component {
           })}
         >
           <div className={classes.drawerHeader} />
-          <Typography className={classes.paragraphStyle} paragraph>
+          {/* <Typography className={classes.paragraphStyle} paragraph>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
             incididunt ut labore et dolore magna aliqua. Rhoncus dolor purus non enim praesent
             elementum facilisis leo vel. Risus at ultrices mi tempus imperdiet. Semper risus in
@@ -199,11 +204,11 @@ class NavBar extends React.Component {
             sollicitudin nibh sit. Ornare aenean euismod elementum nisi quis eleifend. Commodo
             viverra maecenas accumsan lacus vel facilisis. Nulla posuere sollicitudin aliquam
             ultrices sagittis orci a.
-          </Typography>
-        </main>
+          </Typography> */}
         <Route exact path="/TAB1" component={TAB1} />
         <Route path="/TAB2" component={TAB2} />
         <Route path="/TAB3" component={TAB3} />
+        </main>
       </Router>
     );
   }
