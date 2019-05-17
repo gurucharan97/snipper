@@ -12,18 +12,20 @@ import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import ClearIcon from '@material-ui/icons/Clear';
-import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
-import ChevronRightIcon from '@material-ui/icons/ChevronRight';
+// import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
+// import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
+// import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
-import MailIcon from '@material-ui/icons/Mail';
+// import InboxIcon from '@material-ui/icons/MoveToInbox';
+// import MailIcon from '@material-ui/icons/Mail';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import TAB1 from "../Containers/TAB1";
 import TAB2 from "../Containers/TAB2";
 import TAB3 from "../Containers/TAB3";
 import Home from  "../Containers/Home";
+import SearchIcon from '@material-ui/icons/Search';
+
 
 const drawerWidth = 240;
 
@@ -87,7 +89,10 @@ const styles = theme => ({
     color: "white"
   },
   headerColor: {
-    backgroundColor: "#f50057"
+    backgroundColor: "#f50057",
+    display: "flex",
+    justifyContent: "space-between",
+    flexDirection: "row"
   },
   headerName: {
     fontFamily: "monospace",
@@ -95,12 +100,28 @@ const styles = theme => ({
   },
   textAlign: {
       textAlign: "center"
+  },
+  iconStyle: {      
+      marginRight: "1rem",
+      marginTop: "1.2rem"
+  },
+  searchStyle: {
+    height: "7vh",
+    width: "30vw",
+    border: "1px solid gray",
+    borderRadius: ".5rem",
+    textAlign: "left"
+  },
+  iconSearch : {
+    marginTop: ".7rem",
+    marginLeft: ".5rem"
   }
 });
 
 class NavBar extends React.Component {
   state = {
     open: false,
+    toggleOpen : false
   };
 
   handleDrawerOpen = () => {
@@ -110,6 +131,13 @@ class NavBar extends React.Component {
   handleDrawerClose = () => {
     this.setState({ open: false });
   };
+
+  handleToggle = () => {
+      console.log("**toggle**", this.state.toggleOpen)
+      this.setState({
+          toggleOpen: !this.state.toggleOpen
+      })
+  }
 
   render() {
     const { classes, theme } = this.props;
@@ -138,6 +166,10 @@ class NavBar extends React.Component {
               Snipper
             </Typography>
           </Toolbar>
+          <div className={classes.iconStyle}> 
+
+          <SearchIcon onClick={this.handleToggle}/>
+          </div>
         </AppBar>
         <Drawer
           className={classes.drawer}
@@ -179,6 +211,11 @@ class NavBar extends React.Component {
           })}
         >
           <div className={classes.drawerHeader} />
+          {this.state.toggleOpen ? (
+          <div className={classes.searchStyle}>  
+          <SearchIcon className={classes.iconSearch}/>
+          </div>
+          ): null}
           <Home />
           {/* <Typography className={classes.paragraphStyle} paragraph>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
