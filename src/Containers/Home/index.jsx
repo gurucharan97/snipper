@@ -19,7 +19,7 @@ class Resume extends React.Component {
         return (
             <Paper className={classes.paperStyle}>
         <h1 className={classes.colorStyle} >
-        Hello
+         Hello sai krishna
         </h1>
              </Paper>
         )
