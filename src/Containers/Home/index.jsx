@@ -5,7 +5,7 @@ import {withStyles} from "@material-ui/core/styles";
 const styles = theme => ({
     paperStyle: {
         width: '80vw',
-        height :'80vh'
+        height :'55vh',
     },
     colorStyle: {
         color: "grey"
@@ -19,7 +19,7 @@ class Resume extends React.Component {
         return (
             <Paper className={classes.paperStyle}>
         <h1 className={classes.colorStyle} >
-        Hello
+        Hello React App
         </h1>
              </Paper>
         )
